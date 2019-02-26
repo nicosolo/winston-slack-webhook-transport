@@ -43,6 +43,9 @@ module.exports = class SlackHook extends Transport {
     } else {
       payload.text = `${info.level}: ${info.message}`
     }
+    if(!payload.text){
+      return callback(null, true)
+    }
 
     payload.attachments = attachments
 
